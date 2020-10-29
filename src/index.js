@@ -23,7 +23,7 @@ componentDidMount(){
   { 
  if(this.state.errorMessage&&!this.state.lat)
  {
-   return <Spinner />
+   return <Spinner message="Please enable location service and refresh"/>
  }
  if(!this.state.errorMessage&&this.state.lat)
  {
@@ -32,6 +32,6 @@ componentDidMount(){
  }
 
 
-  return <Spinner/>}
+  return <Spinner message="Please accept location request and refresh"/>}
 }
 ReactDOM.render(<App />,document.querySelector('#root'))
