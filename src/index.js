@@ -17,21 +17,26 @@ componentDidMount(){
   
   );
 }
-
+renderContent()
+{
+  if(this.state.errorMessage&&!this.state.lat)
+  {
+    return <Spinner message="Please enable location service and refresh"/>
+  }
+  if(!this.state.errorMessage&&this.state.lat)
+  {
+    console.log(this.state.lat)
+    return <SeasonDisplay lat={this.state.lat.latitude} />
+  }
+ 
+ 
+   return <Spinner message="Please accept location request and refresh"/>
+}
 
   render()
   { 
- if(this.state.errorMessage&&!this.state.lat)
- {
-   return <Spinner message="Please enable location service and refresh"/>
- }
- if(!this.state.errorMessage&&this.state.lat)
- {
-   console.log(this.state.lat)
-   return <SeasonDisplay lat={this.state.lat.latitude} />
- }
+  return <div className="border red">{this.renderContent()}</div>
 
-
-  return <Spinner message="Please accept location request and refresh"/>}
+}
 }
 ReactDOM.render(<App />,document.querySelector('#root'))
